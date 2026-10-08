@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Shelfmate</title>
+  <meta name="description" content="Swipe through books like a dating app and find your perfect read.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <button class="icon-btn" id="btn-profile" aria-label="Edit preferences" title="Edit preferences">⚙</button>
+      <h1 class="logo">shelf<span>mate</span></h1>
+      <button class="icon-btn" id="btn-matches" aria-label="Your matches" title="Your matches">
+        ♥<span class="badge" id="match-count" hidden>0</span>
+      </button>
+    </header>
+
+    <!-- Onboarding: pick genres, moods, pace -->
+    <section class="view" id="view-onboarding" hidden>
+      <h2>Build your reader profile</h2>
+      <p class="muted">Pick what you're into. We'll use it to work out your match % with every book.</p>
+
+      <h3>Genres you love</h3>
+      <div class="chips" id="chips-genres"></div>
+
+      <h3>Moods you're after</h3>
+      <div class="chips" id="chips-moods"></div>
+
+      <h3>Preferred pace</h3>
+      <div class="chips" id="chips-pace"></div>
+
+      <button class="primary" id="btn-start">Start swiping</button>
+    </section>
+
+    <!-- Swipe deck -->
+    <section class="view" id="view-swipe" hidden>
+      <div class="deck" id="deck"></div>
+      <div class="actions">
+        <button class="round nope" id="btn-nope" aria-label="Pass" title="Pass (←)">✕</button>
+        <button class="round super" id="btn-super" aria-label="Super like" title="Super like (↑)">★</button>
+        <button class="round like" id="btn-like" aria-label="Like" title="Like (→)">♥</button>
+      </div>
+      <p class="hint muted">Drag the card, tap the buttons, or use ← ↑ → keys</p>
+    </section>
+
+    <!-- Matches list -->
+    <section class="view" id="view-matches" hidden>
+      <div class="view-head">
+        <button class="link" id="btn-back">← Back to swiping</button>
+        <h2>Your matches</h2>
+      </div>
+      <ul class="match-list" id="match-list"></ul>
+      <p class="muted empty" id="matches-empty">No matches yet. Swipe right on a book you like.</p>
+    </section>
+  </div>
+
+  <!-- "It's a match" overlay -->
+  <div class="overlay" id="match-overlay" hidden>
+    <div class="overlay-card">
+      <p class="overlay-kicker">It's a match!</p>
+      <div class="overlay-cover" id="overlay-cover"></div>
+      <p class="overlay-pct" id="overlay-pct"></p>
+      <p class="overlay-title" id="overlay-title"></p>
+      <button class="primary" id="btn-keep-swiping">Keep swiping</button>
+    </div>
+  </div>
+
+  <!-- Book details sheet -->
+  <div class="overlay" id="detail-overlay" hidden>
+    <div class="overlay-card detail" id="detail-body"></div>
+  </div>
+
+  <script src="books.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
